@@ -28,12 +28,12 @@ import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
-/**
- * NgModule that includes all Material modules that are required to serve the demo-app.
- */
 @NgModule({
   exports: [
+    MatFormFieldModule,
+    MatInputModule,
     MatAutocompleteModule,
     MatButtonModule,
     MatButtonToggleModule,
@@ -46,7 +46,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatExpansionModule,
     MatGridListModule,
     MatIconModule,
-    MatInputModule,
     MatListModule,
     MatMenuModule,
     MatPaginatorModule,
@@ -64,6 +63,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatToolbarModule,
     MatTooltipModule,
     MatNativeDateModule,
-  ]
+  ],
 })
 export class MaterialModule {}

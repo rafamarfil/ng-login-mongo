@@ -15,12 +15,14 @@ const AppRoutes: Routes = [
       import('./features/auth/auth.module').then((m) => m.AuthModule),
     // resolve: [Logged],
   },
-  // {
-  //   path: 'dashboard',
-  //   loadChildren: () =>
-  //     import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
-  //   // canActivate: [AuthGuard],
-  // },
+  {
+    path: 'dashboard',
+    loadChildren: () =>
+      import('./features/dashboard/dashboard.module').then(
+        (m) => m.DashboardModule
+      ),
+    // canActivate: [AuthGuard],
+  },
   {
     path: 'not-found',
     component: NotFoundComponent,

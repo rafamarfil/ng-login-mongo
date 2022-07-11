@@ -3,7 +3,7 @@
 <div class="title">SIGN IN</div>
 
 <form [formGroup]="form" (ngSubmit)="form.valid && loginUser()">
-  <fieldset [disabled]="loginLoading">
+  <fieldset [disabled]="loader">
     <mat-form-field appearance="outline">
       <mat-label>Email</mat-label>
       <input
@@ -44,12 +44,7 @@
       </mat-error>
     </mat-form-field>
 
-    <button
-      type="submit"
-      [disabled]="loginLoading"
-      mat-raised-button
-      color="primary"
-    >
+    <button type="submit" [disabled]="loader" mat-raised-button color="primary">
       SIGN IN
     </button>
   </fieldset>
@@ -60,5 +55,4 @@
   <a class="link" routerLink="/auth/register">Sign up</a>
 </div>
 
-<mat-spinner class="loading" [diameter]="25" *ngIf="loginLoading">
-</mat-spinner>
+<mat-spinner class="loading" [diameter]="25" *ngIf="loader"> </mat-spinner>

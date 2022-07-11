@@ -1,56 +1,45 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { map, retry, catchError } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
-import { HttpApi } from '../constants/httpApi';
-import { environment } from '../../../../environments/environment';
-
-const OAUTH_DATA = environment.oauth;
+const jwt = new JwtHelperService();
+class DecodedToken {
+  exp!: number;
+  username!: string;
+}
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  private uri = 'http://localhost:5000/api/users';
+  private decodedToken;
 
-  loginWithUserCredentials(
-    username: string,
-    password: string
-  ): Observable<any> {
-    let headers = new HttpHeaders();
-    headers = headers.set('Content-Type', 'application/x-www-form-urlencoded');
-
-    const body = new URLSearchParams();
-    body.set('grant_type', 'password');
-    body.set('client_id', OAUTH_DATA.client_id);
-    body.set('client_secret', OAUTH_DATA.client_secret);
-    body.set('username', username);
-    body.set('password', password);
-    body.set('scope', OAUTH_DATA.scope);
-
-    return this.http
-      .post(HttpApi.oauthLogin, body.toString(), { headers })
-      .pipe(
-        retry(1),
-        catchError(this.handleError),
-        map((response: any) => {
-          localStorage.setItem('session', JSON.stringify(response));
-          return response;
-        })
-      );
+  constructor(private http: HttpClient) {
+    this.decodedToken =
+      JSON.parse(localStorage.getItem('auth_meta') as string) ||
+      new DecodedToken();
   }
 
-  private handleError(error: any) {
-    let errorMessage = '';
-    if (error.error instanceof ErrorEvent) {
-      // client-side error
-      errorMessage = `Error: ${error.error.message}`;
-    } else {
-      // server-side error
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
-    }
-    console.log(errorMessage);
-    return throwError(() => {
-      return errorMessage;
-    });
+  public login(loginData: any): Observable<any> {
+    const URI = this.uri + '/login';
+
+    return this.http.post(URI, loginData).pipe(
+      map((token) => {
+        return this.saveToken(token);
+      })
+    );
+  }
+
+  public register(userData: any): Observable<any> {
+    const URI = this.uri + '/register';
+    return this.http.post(URI, userData);
+  }
+
+  private saveToken(token: any): any {
+    this.decodedToken = jwt.decodeToken(token);
+    localStorage.setItem('auth_tkn', token);
+    localStorage.setItem('auth_meta', JSON.stringify(this.decodedToken));
+    return token;
   }
 }

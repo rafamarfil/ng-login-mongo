@@ -4,12 +4,12 @@
 
 export const environment = {
   production: false,
-  oauth: {
-    host: 'https://demo0034835.mockable.io',
-    client_id: '2',
-    client_secret: 'tsN80QNwTawD3WZSX2uziOFI6HstTEs2bXBqsCyv',
-    scope: '*',
-  },
+  // oauth: {
+  //   host: 'https://demo0034835.mockable.io',
+  //   client_id: '2',
+  //   client_secret: 'tsN80QNwTawD3WZSX2uziOFI6HstTEs2bXBqsCyv',
+  //   scope: '*',
+  // },
 };
 
 /*

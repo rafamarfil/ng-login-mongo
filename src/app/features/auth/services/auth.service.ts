@@ -36,6 +36,13 @@ export class AuthService {
     return this.http.post(URI, userData);
   }
 
+  public logout(): void {
+    localStorage.removeItem('auth_tkn');
+    localStorage.removeItem('auth_meta');
+
+    this.decodedToken = new DecodedToken();
+  }
+
   private saveToken(token: any): any {
     this.decodedToken = jwt.decodeToken(token);
     localStorage.setItem('auth_tkn', token);

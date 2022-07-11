@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit, OnDestroy {
           this.snackBar.open('Contraseña o usuario incorrecto', '', {
             duration: 3000,
             horizontalPosition: 'end',
-            verticalPosition: 'bottom',
+            verticalPosition: 'top',
           });
         },
       });

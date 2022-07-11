@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'dashboard',
@@ -8,7 +10,19 @@ import { Component, OnInit } from '@angular/core';
 export class DashboardComponent implements OnInit {
   static path = () => ['dashboard'];
 
-  constructor() {}
+  constructor(private route: ActivatedRoute, public snackBar: MatSnackBar) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.route.queryParams.subscribe((params) => {
+      const key1 = 'loggedin';
+
+      if (params[key1] === 'success') {
+        this.snackBar.open('You have been loggedin successfully', '', {
+          duration: 3000,
+          horizontalPosition: 'end',
+          verticalPosition: 'top',
+        });
+      }
+    });
+  }
 }

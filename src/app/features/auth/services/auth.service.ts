@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import * as moment from 'moment';
 
 const jwt = new JwtHelperService();
 class DecodedToken {
@@ -39,7 +40,6 @@ export class AuthService {
   public logout(): void {
     localStorage.removeItem('auth_tkn');
     localStorage.removeItem('auth_meta');
-
     this.decodedToken = new DecodedToken();
   }
 
@@ -48,5 +48,9 @@ export class AuthService {
     localStorage.setItem('auth_tkn', token);
     localStorage.setItem('auth_meta', JSON.stringify(this.decodedToken));
     return token;
+  }
+
+  public isAuthenticated(): boolean {
+    return moment().isBefore(moment.unix(this.decodedToken.exp));
   }
 }

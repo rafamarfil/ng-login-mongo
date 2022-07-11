@@ -39,16 +39,16 @@ export class LoginComponent implements OnInit, OnDestroy {
           '',
           {
             duration: 3000,
-            horizontalPosition: 'end',
-            verticalPosition: 'bottom',
+            horizontalPosition: 'center',
+            verticalPosition: 'top',
           }
         );
       }
       if (params[key2] === 'success') {
         this.snackBar.open('You have been loggedout successfully', '', {
           duration: 3000,
-          horizontalPosition: 'end',
-          verticalPosition: 'bottom',
+          horizontalPosition: 'center',
+          verticalPosition: 'top',
         });
       }
     });
@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         error: (error) => {
           this.snackBar.open('Contraseña o usuario incorrecto', '', {
             duration: 3000,
-            horizontalPosition: 'end',
+            horizontalPosition: 'center',
             verticalPosition: 'top',
           });
         },

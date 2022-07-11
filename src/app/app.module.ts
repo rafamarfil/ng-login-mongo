@@ -6,6 +6,9 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ErrorInterceptor } from './core/interceptors/httpError.interceptor';
 import { HeadersInterceptor } from './core/interceptors/header.interceptor';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthGuard } from './core/guards/auth.guards';
+import { LoggedGuard } from './core/guards/logged.guard';
+
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -17,6 +20,8 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
   ],
   providers: [
+    AuthGuard,
+    LoggedGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,

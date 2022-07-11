@@ -28,4 +28,29 @@ export class ErrorInterceptor implements HttpInterceptor {
       })
     );
   }
+
+  // private handleErrorResponse(errorResponse: any): Observable<HttpEvent<any>> {
+  //   // console.log('error at interceptor', errorResponse);
+
+  //   if (errorResponse instanceof TimeoutError) {
+  //     return throwError('Timeout Exception');
+  //   }
+
+  //   switch (errorResponse.status) {
+  //     case 401: // Unauthorized
+  //       break;
+  //     case 503: // Service Unavailable
+  //       break;
+  //     case 503: // Internal Server Error
+  //       break;
+  //     default: // Other Error
+  //   }
+
+  //   let customError = new HttpError();
+  //   try {
+  //     customError = HttpError.initWithCode(errorResponse.error.errors[0].code);
+  //   } catch (e) {}
+
+  //   return throwError(customError);
+  // }
 }

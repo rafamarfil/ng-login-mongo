@@ -15,7 +15,6 @@ export class HeadersInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const httpReq = req.clone({
-      //  setHeaders: {'Content-Type': 'application/json'}
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
       }),

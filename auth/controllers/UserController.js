@@ -3,7 +3,7 @@ const env = require('../DB')
 const jwt = require('jsonwebtoken')
 
 exports.register = function (req, res) {
-  const { email, password, passwordConfirmation } = req.body
+  const { username, email, password, passwordConfirmation } = req.body
   if (!email || !password) {
     return res.status(422).json({ 'error': 'Please provide email or password' })
   }
@@ -20,7 +20,7 @@ exports.register = function (req, res) {
     }
     else {
       const user = new User({
-        email, password
+        username, email, password
       })
 
       user.save(function (err) {
@@ -55,7 +55,7 @@ exports.login = function (req, res) {
       json_token = jwt.sign(
         {
           userId: user.id,
-          email: user.email
+          username: user.username
         },
         env.secret,
         { expiresIn: '1h' })

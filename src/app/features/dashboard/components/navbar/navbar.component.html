@@ -4,7 +4,6 @@
 
     <div class="user-menu">
       <button mat-button [matMenuTriggerFor]="menu">
-        <!-- <img src="assets/images/avatars/profile.jpg" alt="User Image" /> -->
         <mat-icon>account_circle</mat-icon>
         <span fxHide.lt-md>Administrator</span>
         <mat-icon fxHide.lt-sm>keyboard_arrow_down</mat-icon>
@@ -16,7 +15,11 @@
         xPosition="before"
         yPosition="above"
       >
-        <button mat-menu-item style="min-width: 194px">
+        <button mat-menu-item style="min-width: 194px" routerLink="home">
+          <mat-icon> home </mat-icon>
+          <span> Home </span>
+        </button>
+        <button mat-menu-item style="min-width: 194px" routerLink="profile">
           <mat-icon> person </mat-icon>
           <span> Profile </span>
         </button>

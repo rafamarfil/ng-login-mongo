@@ -3,36 +3,38 @@
     <span fxFlex></span>
 
     <div class="user-menu">
-      <button mat-button [matMenuTriggerFor]="menu">
-        <mat-icon>account_circle</mat-icon>
-        <span fxHide.lt-md>Administrator</span>
-        <mat-icon fxHide.lt-sm>keyboard_arrow_down</mat-icon>
-      </button>
-
-      <mat-menu
-        #menu="matMenu"
-        [overlapTrigger]="false"
-        xPosition="before"
-        yPosition="above"
-      >
-        <button mat-menu-item style="min-width: 194px" routerLink="home">
+      <div>
+        <button mat-button routerLink="home">
           <mat-icon> home </mat-icon>
           <span> Home </span>
         </button>
-        <button mat-menu-item style="min-width: 194px" routerLink="profile">
-          <mat-icon> person </mat-icon>
-          <span> Profile </span>
+      </div>
+      <div>
+        <button mat-button [matMenuTriggerFor]="menu">
+          <mat-icon>account_circle</mat-icon>
+          <span fxHide.lt-md>{{ username }}</span>
+          <mat-icon fxHide.lt-sm>keyboard_arrow_down</mat-icon>
         </button>
-        <mat-divider></mat-divider>
-        <button mat-menu-item (click)="onLogout()">
-          <mat-icon> exit_to_app </mat-icon>
-          <span> Logout </span>
+        <mat-menu
+          #menu="matMenu"
+          [overlapTrigger]="false"
+          xPosition="before"
+          yPosition="above"
+        >
+          <button mat-menu-item style="min-width: 194px" routerLink="profile">
+            <mat-icon> person </mat-icon>
+            <span> Profile </span>
+          </button>
+          <mat-divider></mat-divider>
+          <button mat-menu-item (click)="onLogout()">
+            <mat-icon> exit_to_app </mat-icon>
+            <span> Logout </span>
+          </button>
+        </mat-menu>
+        <button mat-button class="settings" (click)="onFullscreenToggle()">
+          <mat-icon>fullscreen</mat-icon>
         </button>
-      </mat-menu>
+      </div>
     </div>
-
-    <button mat-button class="settings" (click)="onFullscreenToggle()">
-      <mat-icon>fullscreen</mat-icon>
-    </button>
   </mat-toolbar-row>
 </mat-toolbar>

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthGuard } from './core/guards/auth.guards';
-import { LoggedGuard } from './core/guards/logged.guard';
-import { NotFoundComponent } from './shared/pages/not-found/not-found.component';
+import { AuthGuard } from '@core/guards/auth.guards';
+import { LoggedGuard } from '@core/guards/logged.guard';
+import { NotFoundComponent } from '@shared/pages/not-found/not-found.component';
 
 const AppRoutes: Routes = [
   {
@@ -14,13 +14,15 @@ const AppRoutes: Routes = [
   {
     path: 'auth',
     loadChildren: () =>
-      import('./features/auth/auth.module').then((m) => m.AuthModule),
+      import('@features/authentication/authentication.module').then(
+        (m) => m.AuthenticationModule
+      ),
     resolve: [LoggedGuard],
   },
   {
     path: 'dashboard',
     loadChildren: () =>
-      import('./features/dashboard/dashboard.module').then(
+      import('@features/dashboard/dashboard.module').then(
         (m) => m.DashboardModule
       ),
     canLoad: [AuthGuard],

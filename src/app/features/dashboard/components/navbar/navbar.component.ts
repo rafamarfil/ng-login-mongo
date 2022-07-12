@@ -1,6 +1,6 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../auth/services/auth.service';
+import { AuthService } from '../../../authentication/services/auth.service';
 
 @Component({
   selector: 'navbar',
@@ -8,11 +8,15 @@ import { AuthService } from '../../../auth/services/auth.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent implements OnInit {
-  @Output() sidenavToggle = new EventEmitter<boolean>();
+  username: string = '';
 
   constructor(private authService: AuthService, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.username =
+      JSON.parse(localStorage.getItem('auth_meta') as string).username ||
+      'User';
+  }
 
   onLogout() {
     this.authService.logout();

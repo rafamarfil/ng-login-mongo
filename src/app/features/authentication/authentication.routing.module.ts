@@ -1,16 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthGuard } from '../../core/guards/auth.guards';
-
-import { AuthComponent } from './auth.component';
+import { AuthenticationComponent } from './authentication.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 
-export const AuthRoutes: Routes = [
+export const AuthenticationRoutes: Routes = [
   {
     path: '',
-    component: AuthComponent,
+    component: AuthenticationComponent,
     children: [
       {
         path: '',
@@ -30,9 +28,13 @@ export const AuthRoutes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(AuthRoutes)],
+  imports: [RouterModule.forChild(AuthenticationRoutes)],
   exports: [RouterModule],
 })
-export class AuthRoutingModule {
-  static components = [AuthComponent, LoginComponent, RegisterComponent];
+export class AuthenticationRoutingModule {
+  static components = [
+    AuthenticationComponent,
+    LoginComponent,
+    RegisterComponent,
+  ];
 }

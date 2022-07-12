@@ -53,6 +53,7 @@ in order to install all libraries
 - 2º Go to auth folder `cd auth` and run nodemon server: nodemon server
 - 3º Go to the root folder and run the dev server for the application: npm start
 - 4º Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- 5º Enjoy!! :D
 
 ## Running unit tests
 

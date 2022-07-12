@@ -3,12 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { ErrorInterceptor } from './core/interceptors/httpError.interceptor';
-import { HeadersInterceptor } from './core/interceptors/header.interceptor';
-import { TokenInterceptor } from './core/interceptors/token.interceptor';
+import { ErrorInterceptor } from '@core/interceptors/httpError.interceptor';
+import { HeadersInterceptor } from '@core/interceptors/header.interceptor';
+import { TokenInterceptor } from '@core/interceptors/token.interceptor';
+import { AuthGuard } from '@core/guards/auth.guards';
+import { LoggedGuard } from '@core/guards/logged.guard';
 import { AppRoutingModule } from './app-routing.module';
-import { AuthGuard } from './core/guards/auth.guards';
-import { LoggedGuard } from './core/guards/logged.guard';
 
 import { AppComponent } from './app.component';
 

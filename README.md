@@ -8,34 +8,34 @@ This is a full stack application running with a Node server for backend, Mongodb
 
 - Install the Xcode command-line tools by running the following command in your macOS Terminal:
 
-  xcode-select --install
+  `xcode-select --install`
 
 - Install Homebrew:
 
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 
 - Installing MongoDB 5.0 Community Edition:
 
-  brew tap mongodb/brew
-  brew update
-  brew install mongodb-community@5.0
+  `brew tap mongodb/brew`
+  `brew update`
+  `brew install mongodb-community@5.0`
 
   To run/stop MongoDB as a MacOS service:
 
-  brew services start mongodb-community@5.0
-  brew services stop mongodb-community@5.0
+  `brew services start mongodb-community@5.0`
+  `brew services stop mongodb-community@5.0`
 
 ## Node server for backend
 
 All code about backend, the server, controllers, models, etc are located in a folder called "auth".
 Before starting, go to that folder and install all package.json dependencies:
 
-cd auth
-npm install
+`cd auth`
+`npm install`
 
 I use Nodemon to monitor any changes in the source and automatically restart the server, so, although we installed it locally, it is recommended to install it globally to use it in the command console:
 
-npm i -g nodemon
+`npm i -g nodemon`
 
 This server will run on port 5000
 
@@ -43,7 +43,7 @@ This server will run on port 5000
 
 Go to the root of the application and type:
 
-npm install
+`npm install`
 
 in order to install all libraries
 

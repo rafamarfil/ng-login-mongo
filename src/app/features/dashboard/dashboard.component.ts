@@ -19,8 +19,8 @@ export class DashboardComponent implements OnInit {
       if (params[key1] === 'success') {
         this.snackBar.open('You have been loggedin successfully', '', {
           duration: 3000,
-          horizontalPosition: 'center',
-          verticalPosition: 'top',
+          horizontalPosition: 'right',
+          verticalPosition: 'bottom',
         });
       }
     });

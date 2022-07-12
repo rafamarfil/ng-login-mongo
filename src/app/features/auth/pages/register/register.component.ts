@@ -78,16 +78,16 @@ export class RegisterComponent implements OnInit, OnDestroy {
           });
           this.snackBar.open(`User Registered! Now, you can login`, '', {
             duration: 3000,
-            horizontalPosition: 'center',
-            verticalPosition: 'top',
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
           });
         },
         error: (error) => {
           console.log('error at component', error);
           this.snackBar.open(`${error.message}`, '', {
             duration: 3000,
-            horizontalPosition: 'center',
-            verticalPosition: 'top',
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
           });
         },
       });

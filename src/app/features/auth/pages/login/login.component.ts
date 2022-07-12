@@ -39,16 +39,16 @@ export class LoginComponent implements OnInit, OnDestroy {
           '',
           {
             duration: 3000,
-            horizontalPosition: 'center',
-            verticalPosition: 'top',
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
           }
         );
       }
       if (params[key2] === 'success') {
         this.snackBar.open('You have been loggedout successfully', '', {
           duration: 3000,
-          horizontalPosition: 'center',
-          verticalPosition: 'top',
+          horizontalPosition: 'right',
+          verticalPosition: 'bottom',
         });
       }
     });
@@ -74,10 +74,11 @@ export class LoginComponent implements OnInit, OnDestroy {
           });
         },
         error: (error) => {
-          this.snackBar.open('Contraseña o usuario incorrecto', '', {
+          console.log(error);
+          this.snackBar.open('Wrong user or password', '', {
             duration: 3000,
-            horizontalPosition: 'center',
-            verticalPosition: 'top',
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom',
           });
         },
       });

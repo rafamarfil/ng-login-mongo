@@ -1,12 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { takeUntil, Subject } from 'rxjs';
 import { finalize } from 'rxjs/operators';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { DashboardComponent } from '@features/dashboard/dashboard.component';
 import { AuthService } from '../../services/auth.service';
-import { DashboardComponent } from '../../../dashboard/dashboard.component';
 
 @Component({
   selector: 'login',

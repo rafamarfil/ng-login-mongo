@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import * as moment from 'moment';
+import { URI_LOCALHOST, USER_LOGIN, USER_REGISTER } from './http-consts';
 
 const jwt = new JwtHelperService();
 class DecodedToken {
@@ -13,7 +13,6 @@ class DecodedToken {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  private uri = 'http://localhost:5000/api/users';
   private decodedToken;
 
   constructor(private http: HttpClient) {
@@ -23,9 +22,9 @@ export class AuthService {
   }
 
   public login(loginData: any): Observable<any> {
-    const URI = this.uri + '/login';
+    const URL = URI_LOCALHOST + USER_LOGIN;
 
-    return this.http.post(URI, loginData).pipe(
+    return this.http.post(URL, loginData).pipe(
       map((token) => {
         return this.saveToken(token);
       })
@@ -33,8 +32,8 @@ export class AuthService {
   }
 
   public register(userData: any): Observable<any> {
-    const URI = this.uri + '/register';
-    return this.http.post(URI, userData);
+    const URL = URI_LOCALHOST + USER_REGISTER;
+    return this.http.post(URL, userData);
   }
 
   public logout(): void {
